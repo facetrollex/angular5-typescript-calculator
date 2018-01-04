@@ -2,5 +2,8 @@
   "extends": "tslint-config-airbnb",
   "rulesDirectory": [
     "node_modules/codelyzer"
-  ]
+  ],
+  "rules": {
+    "no-eval": false
+  }
 }
