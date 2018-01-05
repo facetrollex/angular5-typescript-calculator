@@ -1,12 +1,10 @@
 <div class="calculator">
   <div class="calculator__body">
-    <div class="calculator__info">
-      <div class="calculator__result">
-        {{ result }}
-      </div>
+    <div class="calculator__body__info">
+      {{ result ? result : '0' }}
     </div>
-    <div class="calculator__calc-buttons">
-      <div class="calculator__row">
+    <div class="calculator__body__calc-buttons">
+      <div class="calculator__body__calc-buttons__row">
         <button mat-icon-button (click)="delete()">
           <mat-icon>clear</mat-icon>
         </button>
@@ -17,13 +15,19 @@
           <mat-icon>backspace</mat-icon>
         </button>
       </div>
-      <div class="calculator__row" *ngFor="let row of calcMap">
-        <button mat-button *ngFor="let button of row" (click)="addToCalculation(button)">{{ button }}</button>
+      <div class="calculator__body__calc-buttons__row" *ngFor="let row of calcMap">
+        <button class="calculator__body__calc-buttons__row__button"
+                mat-button
+                *ngFor="let button of row"
+                (click)="addToCalculation(button)">
+          {{ button }}
+        </button>
       </div>
     </div>
   </div>
 </div>
 <div class="memory">
+  <div class="memory__header">Memory</div>
   <div class="memory__item" *ngFor="let item of memory; let i = index;">
     <span>{{ item }}</span>
     <button mat-icon-button (click)="copyFromMemory(item)">

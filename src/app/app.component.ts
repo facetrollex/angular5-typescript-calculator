@@ -37,7 +37,7 @@ export class AppComponent {
     let result: string;
 
     try {
-      result = eval(this.result).toString();
+      result = eval(this.result.replace(/^0+/, '')).toString();
     } catch (e) {
       result = 'Syntax Error';
     }
@@ -46,11 +46,11 @@ export class AppComponent {
   }
 
   public delete(last?: boolean): void {
-    this.result = last ? this.result.slice(0, -1) : '';
+    this.result = last && this.result.length > 1 ? this.result.slice(0, -1) : '';
   }
 
   public saveToMemory(): void {
-    if (!isNaN(+this.result)) {
+    if (!isNaN(+this.result) && this.result.length > 0) {
       this.memory.push(this.result);
     }
   }
